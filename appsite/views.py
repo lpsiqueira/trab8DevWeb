@@ -10,7 +10,7 @@ def index(request):
 
 def signIn(request):
     return render(request, 'appsite/sign_in.html')
-"""
+
 def signUp(request):
-    imagem = get_object_or_404(Image, pk=2)
-    return render(request, 'appsite/sign_up.html', {'imagem': imagem})"""
+    #imagem = get_object_or_404(Image, pk=2)
+    return render(request, 'appsite/sign_up.html') 
