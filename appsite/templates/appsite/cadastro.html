@@ -1,42 +1,80 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 <head>
     <title>Title</title>
-    <!-- Required meta tags -->
+    <!-- Required meta tags 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 </head>
-<body>
+<body> -->
 
+{% extends 'base.html' %}
 
-    <div class="container">
-        <form action="" class="">
-            <div class="form-group">
+{% block title %}Cadastro{% endblock %}
+
+{% block corpo %}    
+    <form action="" class="container">
+        <div class="form-group col-4">
             <label for="">Autor</label>
             <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
             <small id="helpId" class="text-muted">Help text</small>
-            </div>
-            <div class="form-group">
-            <label for="">Projeto</label>
-            <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-            <small id="helpId" class="text-muted">Help text</small>
-            </div>
-            <div class="form-group">
+        </div>
+
+        <div class="container form-group">
             <label for="">Linguagem</label>
+            <div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="">
+                    <label class="form-check-label" for="">Java</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="">
+                    <label class="form-check-label" for="">C/C++</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="">
+                    <label class="form-check-label" for="">Python</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="">
+                    <label class="form-check-label" for="">Javascript</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="">
+                    <label class="form-check-label" for="">HTML</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="">
+                    <label class="form-check-label" for="">PHP</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="">
+                    <label class="form-check-label" for="">Ruby</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="">
+                    <label class="form-check-label" for="">Visual Basic .NET</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="">
+                    <label class="form-check-label" for="">PL/SQL</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="">
+                    <label class="form-check-label" for="">Swift</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group col-4">
+            <label for="">Nome do Projeto</label>
             <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
             <small id="helpId" class="text-muted">Help text</small>
-            </div>
-        </form>
-    </div>
-        
+        </div>
+    </form>
+{% endblock %}     
     
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-</body>
-</html>
+    
