@@ -13,4 +13,7 @@ def signIn(request):
 
 def signUp(request):
     #imagem = get_object_or_404(Image, pk=2)
-    return render(request, 'appsite/sign_up.html') 
+    return render(request, 'appsite/sign_up.html')
+
+def cadastro(request):
+    return render(request, 'appsite/cadastro.html')
