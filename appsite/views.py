@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from .forms import ProjetoForm
 #from appsite.models import Image
 
 def teste(request):
@@ -16,4 +17,5 @@ def signUp(request):
     return render(request, 'appsite/sign_up.html')
 
 def cadastro(request):
-    return render(request, 'appsite/cadastro.html')
+    form = ProjetoForm()
+    return render(request, 'appsite/cadastro.html', form)
