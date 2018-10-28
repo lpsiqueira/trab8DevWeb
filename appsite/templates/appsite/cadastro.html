@@ -10,54 +10,65 @@
     <div class="container">
         <p class="h3" style="margin: 20pt 10pt">Cadastro</p>
 
-        <form action="" class="">
+        <form action="" class="" method="POST">
             <div class="form-group col-4">
                 <label for="">Autor</label>
-                <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                {# <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId"> #}
+                {{ form.autor }}
                 <small id="helpId" class="text-muted">Help text</small>
             </div>
 
             <div class="container form-group">
                 <label for="">Linguagem</label>
                 <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="">
+                    <div class="form-check form-check-inline">                        
+                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
+                        {{ form.java }}
                         <label class="form-check-label" for="">Java</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="">
+                    <div class="form-check form-check-inline">                        
+                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
+                        {{ form.c }}
                         <label class="form-check-label" for="">C/C++</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="">
+                    <div class="form-check form-check-inline">                        
+                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
+                        {{ form.python }}
                         <label class="form-check-label" for="">Python</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="">
+                    <div class="form-check form-check-inline">                        
+                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
+                        {{ form.javascript }}
                         <label class="form-check-label" for="">Javascript</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="">
+                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
+                        {{ form.html }}
                         <label class="form-check-label" for="">HTML</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="">
+                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
+                        {{ form.php }}
                         <label class="form-check-label" for="">PHP</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="">
+                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
+                        {{ form.ruby }}
                         <label class="form-check-label" for="">Ruby</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="">
+                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
+                        {{ form.vb }}
                         <label class="form-check-label" for="">Visual Basic .NET</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="">
+                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
+                        {{ form.sql }}
                         <label class="form-check-label" for="">PL/SQL</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="">
+                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
+                        {{ form.swift }}
                         <label class="form-check-label" for="">Swift</label>
                     </div>
                 </div>
@@ -65,7 +76,8 @@
             
             <div class="form-group col-4">
                 <label for="">Nome do Projeto</label>
-                <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                {# <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId"> #}
+                {{ form.nomeprojeto }}
                 <small id="helpId" class="text-muted">Help text</small>
             </div>
         </form>

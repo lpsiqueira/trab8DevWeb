@@ -17,5 +17,16 @@ def signUp(request):
     return render(request, 'appsite/sign_up.html')
 
 def cadastro(request):
+
     form = ProjetoForm()
-    return render(request, 'appsite/cadastro.html', form)
+    context = {'form': form, }
+    return render(request, 'appsite/cadastro.html', context)
+
+def exibe(request):
+    pass
+
+def edita(request):
+    pass
+
+def remove(request):
+    pass
