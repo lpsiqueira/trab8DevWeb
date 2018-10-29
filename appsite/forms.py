@@ -7,7 +7,7 @@ from .models import Projeto, Language
 class ProjetoForm(forms.ModelForm):
     class Meta:
         model = Projeto
-        fields = ('projeto_id', 'autor', 'linguagem', 'nomeprojeto')
+        fields = ('projeto_id', 'autor', 'linguagem', 'nomeProjeto')
 
 
     projeto_id = forms.CharField(widget=forms.HiddenInput(), required=False)
@@ -21,7 +21,7 @@ class ProjetoForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple(attrs={'class': 'list-unstyled', 'maxlength': '120'})
     )    
 
-    nomeprojeto = forms.CharField(
+    nomeProjeto = forms.CharField(
         error_messages={'required': 'Campo obrigatório.', },
         widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': '120'}),
     )
