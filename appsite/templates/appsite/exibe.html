@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}<title>Exibe</title>{% endblock %}
+{% block includes %}<link href="{% static 'appsite/css/estilos.css'%}" rel="stylesheet">{% endblock %}
+
+{% block corpo %}
+    <div class="container">
+        <div style="margin: 30pt 0">
+            <p class="h3">Projeto</p>
+
+            <p class="h5">Autor: </p>
+            {{ projeto.autor }}
+            <p class="h5">Nome do Projeto:</p>
+            {{ projeto.nomeProjeto }}
+            <p class="h5">Linguagens:</p>
+            {% for x in linguagem %}
+                {{ x.nome }}
+            {% endfor %}            
+        </div>
+            
+    </div>
+{% endblock %}

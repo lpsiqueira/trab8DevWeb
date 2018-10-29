@@ -11,6 +11,7 @@
         <p class="h3" style="margin: 20pt 10pt">Cadastro</p>
 
         <form action="" class="" method="POST">
+            {% csrf_token %}
             <div class="form-group col-4">
                 <label for="">Autor</label>
                 {# <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId"> #}
@@ -21,7 +22,9 @@
             <div class="container form-group">
                 <label for="">Linguagem</label>
                 <div>
-                    <div class="form-check form-check-inline">                        
+                    {{ form.linguagem }}
+                
+                    <!-- <div class="form-check form-check-inline">                        
                         {# <input class="form-check-input" type="checkbox" value="" id=""> #}
                         {{ form.java }}
                         <label class="form-check-label" for="">Java</label>
@@ -70,7 +73,7 @@
                         {# <input class="form-check-input" type="checkbox" value="" id=""> #}
                         {{ form.swift }}
                         <label class="form-check-label" for="">Swift</label>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             
@@ -80,7 +83,7 @@
                 {{ form.nomeprojeto }}
                 <small id="helpId" class="text-muted">Help text</small>
             </div>
-
+            {% csrf_token %}
             <button type="submit" class="btn btn-dark" style="margin-left: 12pt">Cadastrar</button>
             
         </form>

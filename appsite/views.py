@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from django.http import HttpResponse
 from .forms import ProjetoForm
-from .models import Projeto
+from .models import Projeto, Language
 #from appsite.models import Image
 
 def teste(request):
@@ -18,28 +19,28 @@ def signUp(request):
     return render(request, 'appsite/sign_up.html')
 
 def cadastro(request):
-    """
+    
     projeto_id = request.POST.get('projeto_id')
 
     if request.POST:
         # Se o parâmetro veio, trata-se de uma alteração.
         if projeto_id:
-            acao = 'alteracao'
+            #acao = 'alteracao'
             # Recupera um objeto Projeto ou gera o erro 404
-            produto = get_object_or_404(Projeto, pk=projeto_id)
+            projeto = get_object_or_404(Projeto, pk=projeto_id)
 
             # Como se trata de uma alteração, o objeto ProjetoForm é instanciado utilizando
             # os dados provenientes do banco de dados (instance=produto) e, em seguida,
             # essas informações são atualizadas utilizando os dados submetidos pelo usuário (request.POST).
-            form_produto = ProjetoForm(request.POST, instance=produto)
+            form_projeto = ProjetoForm(request.POST, instance=projeto)
         else:
-            acao = 'inclusao'
-            form_produto = ProjetoForm(request.POST)
+            #acao = 'inclusao'
+            form_projeto = ProjetoForm(request.POST)
 
-    if form_produto.is_valid():
+        if form_projeto.is_valid():
             # O método save() de ModelForm salva o produto (inclui ou altera) no banco de dados e retorna
             # um objeto do tipo Projeto.
-            produto = form_produto.save()
+            projeto = form_projeto.save()
 
             # Se a variável projeto_id for diferente de None então trata-se de uma alteração
             if projeto_id:
@@ -50,19 +51,20 @@ def cadastro(request):
 
             # Aqui efetuamos um redirect para evitar que um mesmo produto seja cadastrado mais
             # de uma vez caso o usuário aperte a tecla F5 após cadastrar o produto.
-            return redirect('produto:exibe_produto', id=produto.id)
+            return redirect('appsite:exibe', id=projeto.id)
     else:
         # Ao chegar uma requisição do tipo GET, a página cadastra_produto.html é exibida.
-        acao = 'inclusao'
-        form_produto = ProjetoForm() """
+        #acao = 'inclusao'
+        form_projeto = ProjetoForm()
 
-    form = ProjetoForm()
-    context = {'form': form, }
+    #form_projeto = ProjetoForm()
+    context = {'form': form_projeto, }
     return render(request, 'appsite/cadastro.html', context)
 
 def exibe(request, id):
-    ojb = get_object_or_404(Projeto, pk=id)
-    return render(request, 'appsite/exibe.html', ojb)
+    obj = get_object_or_404(Projeto, pk=id)
+    projeto = {'projeto': obj, 'linguagem': obj.linguagem.all()}
+    return render(request, 'appsite/exibe.html', projeto)
 
 def edita(request):
     projeto = get_object_or_404(Projeto, pk=id)
