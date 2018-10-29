@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.http import HttpResponse
-from .forms import ProjetoForm
+from .forms import ProjetoForm, RemoveProdutoForm
 from .models import Projeto, Language
 #from appsite.models import Image
 
@@ -62,8 +62,9 @@ def cadastro(request):
     return render(request, 'appsite/cadastro.html', context)
 
 def exibe(request, id):
-    obj = get_object_or_404(Projeto, pk=id)
-    projeto = {'projeto': obj, 'linguagem': obj.linguagem.all()}
+    obj = get_object_or_404(Projeto, pk=id)    
+    remove_projeto_form = RemoveProdutoForm(initial={'projeto_id': id})
+    projeto = {'projeto': obj, 'linguagem': obj.linguagem.all(), 'remove_projeto_form': remove_projeto_form,}
     return render(request, 'appsite/exibe.html', projeto)
 
 def edita(request):
@@ -73,4 +74,13 @@ def edita(request):
     return render(request, 'produto/cadastra_produto.html', {'form': formProjeto, 'acao': 'alteracao'})
 
 def remove(request):
-    pass
+    remove_projeto_form = RemoveProdutoForm(request.POST)
+    if remove_projeto_form.is_valid():
+        projeto_id = remove_projeto_form.cleaned_data['projeto_id']
+        projeto = get_object_or_404(Projeto, pk=projeto_id)
+        projeto.delete()
+        messages.add_message(request, messages.INFO, 'Projeto removido com sucesso.')
+        return render(request, 'appsite/exibe.html', {'projeto': projeto,
+                                                              'remove_projeto_form': None})
+    else:
+        raise ValueError('Ocorreu um erro inesperado ao tentar remover um produto')

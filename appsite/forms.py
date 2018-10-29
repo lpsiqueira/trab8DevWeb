@@ -25,3 +25,9 @@ class ProjetoForm(forms.ModelForm):
         error_messages={'required': 'Campo obrigatório.', },
         widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': '120'}),
     )
+
+class RemoveProdutoForm(forms.Form):
+    class Meta:
+        fields = ('projeto_id')
+
+    projeto_id = forms.CharField(widget=forms.HiddenInput(), required=True)

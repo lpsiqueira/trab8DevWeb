@@ -19,6 +19,19 @@
                 {{ x.nome }}
             {% endfor %}            
         </div>
+
+    <form action="{% url 'appsite:remove' %}" method="POST" id="remove_projeto" novalidate>
+        {% csrf_token %}
+
+        <button id="btn_remove" class="btn btn-danger">Remover</button>
+    </form>
             
     </div>
+{% endblock %}
+
+{% block domready %}
+    $("#btn_remove").click(function() {
+        $("#remove_projeto").append('{{ remove_projeto_form.projeto_id }}')
+        $("#remove_projeto").submit()
+    })
 {% endblock %}

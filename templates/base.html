@@ -110,5 +110,12 @@ and open the template in the editor.
     <script src="{% static 'appsite/js/popper.js' %}"></script>
     <script src="{% static 'appsite/js/bootstrap.js' %}"></script>
     <script src="{% static 'appsite/js/script.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            {% block domready %}
+
+            {% endblock %}
+        })
+    </script>
 </body>
 </html>
