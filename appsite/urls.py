@@ -12,4 +12,5 @@ urlpatterns = [
     path('exibe/<int:id>/', views.exibe, name='exibe'),
     path('edita/', views.edita, name='edita'),
     path('remove/', views.remove, name='remove'),
+    path('busca/', views.busca, name='busca')
 ]

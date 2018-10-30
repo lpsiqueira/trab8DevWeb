@@ -18,6 +18,10 @@ def signUp(request):
     #imagem = get_object_or_404(Image, pk=2)
     return render(request, 'appsite/sign_up.html')
 
+def busca(request):
+    projetos = Projeto.objects.all()
+    return render(request, 'appsite/busca.html', {'projetos': projetos, })
+
 def cadastro(request):
     
     projeto_id = request.POST.get('projeto_id')
