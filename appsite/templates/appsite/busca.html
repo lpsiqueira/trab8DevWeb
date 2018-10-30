@@ -27,7 +27,7 @@
                 {% for x in projetos %}
                 <tr>
                     <th class="text-center"><a href="">{{ x.autor }}</a></th>
-                    <th class="text-center"><a href="" id="nome_projeto">{{ x.nomeProjeto }}</a></th>
+                    <th class="text-center"><a href="{% url 'appsite:exibe' x.id %}" id="nome_projeto">{{ x.nomeProjeto }}</a></th>
                     <th class="text-center">
                         {% for y in x.linguagem.all %}
                         {{ y.nome }}
