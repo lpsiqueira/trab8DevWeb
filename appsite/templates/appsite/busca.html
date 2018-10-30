@@ -19,7 +19,7 @@
             <tbody id="tabela-corpo">
                 {% for x in projetos %}
                 <tr class="">
-                    <td class="text-center" scope="row" width="10%"><a href="">{{ x.autor }}</a></td>
+                    <td class="text-center" scope="row" width="10%">{{ x.autor }}</td>
                     <td class="text-center" scope="row" width="10%"><a href="{% url 'appsite:exibe' x.id %}" id="nome_projeto">{{ x.nomeProjeto }}</a></td>
                     <td class="text-center" scope="row" width="20%">
                         {% for y in x.linguagem.all %}

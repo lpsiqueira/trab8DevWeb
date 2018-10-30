@@ -7,6 +7,14 @@
 
 {% block corpo %}
     <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-primary" role="alert" style="margin: 30pt 0">
+                <strong>{{ message }}</strong>}
+            </div>
+            {% endfor %}
+        {% endif %}
+
         <div style="margin: 30pt 0">
             <p class="h3">Projeto</p>
 
@@ -19,7 +27,8 @@
                 {{ x.nome }}
             {% endfor %}            
         </div>
-
+    
+    {% if remove_projeto_form %}
     <form action="{% url 'appsite:remove' %}" method="POST" id="remove_projeto" novalidate>
         {% csrf_token %}
 
@@ -27,6 +36,7 @@
     </form>
             
     </div>
+    {% endif %}
 {% endblock %}
 
 {% block domready %}
