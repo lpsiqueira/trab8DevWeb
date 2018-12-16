@@ -25,7 +25,7 @@ SECRET_KEY = '-$v)e#z78el36g*ccy1)*4+1w!3bpy(bz(is*)mzg3a10ae40d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.3', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.1.4', '127.0.0.1', '177.51.188.33']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'appsite',
+    'carrinho'
 ]
 
 MIDDLEWARE = [
@@ -100,6 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+CARRINHO_SESSION_ID='carrinho'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
