@@ -13,22 +13,17 @@ def carrinho(request):
 
     if request.method == 'POST':
         form = RemoveItem(request.POST, auto_id=False)
-        if form.is_valid():
-            if form.cleaned_data['remover']:
-                #i = Carrinho.objects.get(pk=form.cleaned_data['item_id'])                
-                #i.delete()
-                carrinho.remover(form.cleaned_data['item_id'])
-                print(form.cleaned_data['remover'])
+        form.is_valid()
+
+        if request.POST.get('remover') == 'true':
+            carrinho.remover(request.POST.get('id'))
+            return HttpResponse()
+
         else:
-            quantidade = request.POST.get('quantidade')
+            quantidade = int(request.POST.get('quantidade'))
             if quantidade != '':
                 idQuantidade = request.POST.get('id')
-                #itemQtd = Carrinho.objects.get(pk=idQuantidade)                
-                #itemQtd.quantidade = quantidade
-                #itemQtd.save()
                 carrinho.alterar(idQuantidade, quantidade)
-                #itemQtd = Carrinho.objects.get(pk=idQuantidade)
-                #quantidade = itemQtd.quantidade
                 quantidade = carrinho.getCarrinho()[idQuantidade]['quantidade']
                 saida = {'quantidade': quantidade}
                 return JsonResponse(saida)
@@ -39,7 +34,6 @@ def carrinho(request):
     itens = []
     context = {'form': form}
 
-    #query = Carrinho.objects.filter(user=request.user)
     itensCarrinho = carrinho.getCarrinho()
     for item in itensCarrinho:
         proj = Projeto.objects.get(pk=itensCarrinho[item]['id'])
@@ -52,8 +46,6 @@ def carrinho(request):
 def adiciona(request, idProjeto):
     carrinho = Carrinho(request)
     
-    #item = Carrinho.objects.get(user=usuario, projeto=idProjeto)    
-    #item.quantidade += 1
     carrinho.adicionar(idProjeto)
     response = 'carrinho alterado'
     
