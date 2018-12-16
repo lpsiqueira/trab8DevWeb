@@ -69,7 +69,7 @@
             $.ajax({
                 url: 'atualizacao/quantidade/',
                 type: 'POST',                
-                data: {csrfmiddlewaretoken: '{{ csrf_token }}', 'quantidade': $(this).val(), 'id': $(this).parent().find('input:nth-child(2)').val()},
+                data: {csrfmiddlewaretoken: '{% csrf_token %}', 'quantidade': $(this).val(), 'id': $(this).parent().find('input:nth-child(2)').val()},
                 dataType: 'json',
                 success: retornoF
             })
