@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}<title>Carrinho</title>{% endblock %}
+
+{% block includes %}<link href="{% static 'appsite/css/bootstrap.css'%}" rel="stylesheet">{% endblock %}
+
+{% block corpo %}
+
+    <div class="container">
+        <table class="table table-striped table-responsive table-bordered table-sm" id="tabela-carrinho">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th class="text-center" scope="col">Projeto</th>
+                    <th class="text-center" scope="col">Quantidade</th>
+                    <th class="text-center" scope="col">Remover</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in itens %}
+                <tr>
+                    <td scope="row" width="0%">{{ item.id }}</td>
+                    <td class="text-center" scope="row" width="40%">{{ item.nome }}</td>
+                    <td class="text-center" scope="row" width="40%">{{ item.qtd }}</td>
+                    <td class="text-center" scope="row" width="20%">
+                        <form action="" method="POST" novalidate>
+                            {% csrf_token %}
+                            {{ form.item_id }}
+                            {{ form.remover }}
+                            {{ form.quantidade }}
+                            <button type="submit" class="btn btn-sm btn-danger">Remover</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
+{% block domready %}
+    $('#tabela-carrinho tr').each(function(){
+        //colocando o id do item do carrinho no hidden input do formulario
+        let valor = $(this).find('td:first-child').text()
+        $(this).find('td:last-child>form>input:nth-child(2)').val(valor)
+
+        //colocando a quantidade do item no input
+        let quantidade = $(this).find('td:nth-child(3)').text()
+        $(this).find('td:last-child>form>input:nth-child(4)').val(quantidade)
+
+        $(this).find('td:last-child>form>button:last-child').on('click', function(e) {
+            $(this).parent().find('input:nth-child(3)').val('true')
+        })
+
+        $(this).find('td:last-child>form>input:nth-child(4)').on('change textInput input', function(e) {
+            console.log($(this).val())
+            let abc = $(this).val()
+            var qtdRetorno =  abc
+            
+            function retornoF (retorno) {
+                console.log('quantidade retornada: ' + retorno.quantidade)
+                qtdRetorno = retorno.quantidade
+                //$(this).find('td:nth-child(3)').text(retorno.quantidade)
+            }
+
+            $.ajax({
+                url: 'atualizacao/quantidade/',
+                type: 'POST',                
+                data: {csrfmiddlewaretoken: '{{ csrf_token }}', 'quantidade': $(this).val(), 'id': $(this).parent().find('input:nth-child(2)').val()},
+                dataType: 'json',
+                success: retornoF
+            })
+
+            $(this).parent().parent().parent().find('td:nth-child(3)').text(qtdRetorno)
+        })
+
+    })
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

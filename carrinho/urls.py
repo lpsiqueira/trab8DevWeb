@@ -4,5 +4,5 @@ from django.urls import path
 app_name = 'carrinho'
 
 urlpatterns = [
-    path('carrinho/', views.carrinho, name='carrinho'),
+    path('', views.carrinho, name='carrinho'),
 ]

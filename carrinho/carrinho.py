@@ -1,4 +1,5 @@
 from appsite.models import Projeto
+from projeto import settings
 
 class Carrinho(object):
     def __init__(self, request):
@@ -8,22 +9,25 @@ class Carrinho(object):
         if not self.carrinho:
             self.carrinho = self.session[settings.CARRINHO_SESSION_ID] = {}
 
+    
+    def getCarrinho(self):
+        return self.carrinho
 
-    def adicionar(request, id, quantidade=1):
+
+    def adicionar(self, id):
         projeto = Projeto.objects.get(pk=id)
         projeto_id = str(id)            
 
         if projeto_id not in self.carrinho:
-            self.carrinho[projeto_id] = {'id': str(projeto.id), 'quantidade': quantidade}
+            self.carrinho[projeto_id] = {'id': projeto.id, 'quantidade': 1}
 
         else:
-            #nao sei pq essa linha
-            self.carrinho[projeto_id]['quantidade'] = quantidade
+            self.carrinho[projeto_id]['quantidade'] += 1
 
         self.salvar()
 
 
-    def remover(request, id):
+    def remover(self, id):
         projeto_id = str(id)
 
         if projeto_id in self.carrinho:
@@ -31,12 +35,12 @@ class Carrinho(object):
             self.salvar()
 
 
-    def alterar(request, id, quantidade):
+    def alterar(self, id, quantidade):
         projeto_id = str(id)
 
         if projeto_id in self.carrinho:
             self.carrinho[projeto_id]['quantidade'] = quantidade
             self.salvar()
 
-    def salvar():
-        self.session[setting.CARRINHO_SESSION_ID] = self.carrinho
+    def salvar(self):
+        self.session[settings.CARRINHO_SESSION_ID] = self.carrinho
